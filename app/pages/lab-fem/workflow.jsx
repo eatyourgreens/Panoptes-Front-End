@@ -7,6 +7,8 @@ import RetirementRulesEditor from '../../components/retirement-rules-editor.cjsx
 import { Link } from 'react-router';
 import LayoutOptions from './components/layout-options.jsx';
 import FemMultiImageSubjectOptionsEditor from './components/fem-multi-image-subject-options-editor.jsx';
+import MapTileLayersEditor from './components/map-tile-layers-editor.jsx';
+import MapOverlayLayersEditor from './components/map-overlay-layers-editor.jsx';
 import taskComponents from '../../classifier/tasks/index.js';
 import AutoSave from '../../components/auto-save.coffee';
 import WorkflowCreateForm from '../lab/workflow-create-form.cjsx';
@@ -407,6 +409,14 @@ class EditWorkflowPage extends Component {
                 <SubjectGroupViewerEditor
                   workflow={this.props.workflow}
                 />
+                <hr />
+              </div> : undefined}
+
+            {Array.from(this.props.project.experimental_tools).includes('mapping') ?
+              <div>
+                <MapTileLayersEditor workflow={this.props.workflow} />
+                <hr />
+                <MapOverlayLayersEditor workflow={this.props.workflow} />
                 <hr />
               </div> : undefined}
 
